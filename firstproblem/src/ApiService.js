@@ -8,8 +8,24 @@ class ApiService {
     return axios.get(API_BASE_URL + '/student');
   }
 
+  addStudent(studentEntity) {
+    return axios.post(API_BASE_URL + '/student/', studentEntity);
+  }
+
+  deleteStudent(lStudentId) {
+    return axios.delete(API_BASE_URL + '/student/' + lStudentId);
+  }
+
   fetchClasses() {
     return axios.get(API_BASE_URL + '/class');
+  }
+
+  addClass(classEntity) {
+    return axios.post(API_BASE_URL + '/class/', classEntity);
+  }
+
+  deleteClass(lClassId) {
+    return axios.delete(API_BASE_URL + '/class/' + lClassId);
   }
 
 }
