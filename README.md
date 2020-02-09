@@ -37,6 +37,25 @@ After that, develop a **FRONTEND APPLICATION** on which you can do the following
 
 This solution was built using ReactJS using scripts version 1.1.5, AJAX calls managed with AXIOS.
 
+## How to import
+
+Create a folder in your filesystem called **firstproblemfe**
+
+Navigate to that folder, open a terminal and execute the following command:
+
+```
+git clone https://github.com/easorucoa94/truextend-fe.git
+```
+
+Then, navigate to the **truextend-fe** folder, open the **firstProblem** folder and execute:
+
+```
+npm install
+npm start
+```
+
+Your application will be running under **http://localhost:3000**
+
 ## Requirements
 
 **BackEnd Aplication**: https://github.com/easorucoa94/firstProblemBE
