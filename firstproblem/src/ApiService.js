@@ -27,6 +27,10 @@ class ApiService {
   deleteClass(lClassId) {
     return axios.delete(API_BASE_URL + '/class/' + lClassId);
   }
+  
+  filterClasses(filterClassEntity) {
+    return axios.post(API_BASE_URL + '/class/search', filterClassEntity);
+  }
 
 }
 

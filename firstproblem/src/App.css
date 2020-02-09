@@ -34,3 +34,12 @@ nav {
 .insertButtonBox {
   margin-bottom: 3rem;
 }
+
+.form-group label {
+  font-weight: bold;
+}
+
+.filterButtonBox {
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
