@@ -16,6 +16,10 @@ class ApiService {
     return axios.delete(API_BASE_URL + '/student/' + lStudentId);
   }
 
+  filterStudents(filterStudentEntity) {
+    return axios.post(API_BASE_URL + '/student/search', filterStudentEntity);
+  }
+
   fetchClasses() {
     return axios.get(API_BASE_URL + '/class');
   }
