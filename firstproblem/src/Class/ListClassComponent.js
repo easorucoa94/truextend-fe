@@ -6,11 +6,19 @@ class ListClassComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      classList: []
+      classList: [],
+      filterClassEntity: {
+        "sclassCode": "",
+        "sclassTitle": "",
+        "sclassDescription": "",
+        "classFilteredStudents": []
+      }
     }
     this.reloadClassList = this.reloadClassList.bind(this);
     this.deleteClass = this.deleteClass.bind(this);
     this.addClass = this.addClass.bind(this);
+    this.onChangeClassFilter = this.onChangeClassFilter.bind(this);
+    this.filterClassEntity = this.filterClassEntity.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +50,24 @@ class ListClassComponent extends Component {
     this.props.history.push('/add-class');
   }
 
+  onChangeClassFilter = (event) => {
+    let filterClassEntity = this.state.filterClassEntity;
+    filterClassEntity[event.target.name] = event.target.value;
+    this.setState({
+      filterClassEntity: filterClassEntity
+    });
+  }
+
+  filterClassEntity = (event) => {
+    event.preventDefault();
+    ApiService.filterClasses(this.state.filterClassEntity)
+      .then(res => {
+        this.setState({
+          classList: res.data
+        })
+      });
+  }
+
   render() {
     return (
       <div className="container">
@@ -49,12 +75,33 @@ class ListClassComponent extends Component {
         <div className="text-center insertButtonBox">
           <button className="btn btn-primary" onClick={() => this.addClass()}>Insert Class</button>
         </div>
+        <form>
+          <div className="row">
+            <div className="col-4 form-group">
+                <label>Code:</label>
+                <input type="text" placeholder="Class's Code" name="sclassCode" className="form-control" value={this.state.filterClassEntity.sclassCode} onChange={this.onChangeClassFilter}/>
+            </div>
+            <div className="col-4 form-group">
+                <label>Title:</label>
+                <input type="text" placeholder="Class's Title" name="sclassTitle" className="form-control" value={this.state.filterClassEntity.sclassTitle} onChange={this.onChangeClassFilter}/>
+            </div>
+            <div className="col-4 form-group">
+              <label>Description:</label>
+              <input type="text" placeholder="Class's Description" name="sclassDescription" className="form-control" value={this.state.filterClassEntity.sclassDescription} onChange={this.onChangeClassFilter}/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12 text-right filterButtonBox">
+              <button className="btn btn-info" onClick={this.filterClassEntity}>Filter</button>
+            </div>
+          </div>
+        </form>
         <table className="table table-striped">
           <thead>
             <tr>
-              <th className="text-center">sClassCode</th>
-              <th className="text-center">sClassTitle</th>
-              <th className="text-center">sClassDescription</th>
+              <th className="text-center">Code</th>
+              <th className="text-center">Title</th>
+              <th className="text-center">Description</th>
               <th className="text-center">Options</th>
             </tr>
           </thead>

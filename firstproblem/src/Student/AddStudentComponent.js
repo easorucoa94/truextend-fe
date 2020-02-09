@@ -76,12 +76,12 @@ class AddStudentComponent extends Component {
       <form>
         <div className="form-group">
             <label>First Name:</label>
-            <input type="text" placeholder="Student's First Name" name="sstudentFirstName" className="form-control" value={this.state.sstudentFirstName} onChange={this.onChangeStudentProperty}/>
+            <input type="text" placeholder="Student's First Name" name="sstudentFirstName" className="form-control" value={this.state.studentEntity.sstudentFirstName} onChange={this.onChangeStudentProperty}/>
         </div>
 
         <div className="form-group">
             <label>Last Name:</label>
-            <input placeholder="Student's Last Name" name="sstudentLastName" className="form-control" value={this.state.sstudentLastName} onChange={this.onChangeStudentProperty}/>
+            <input placeholder="Student's Last Name" name="sstudentLastName" className="form-control" value={this.state.studentEntity.sstudentLastName} onChange={this.onChangeStudentProperty}/>
         </div>
 
         <div className="form-group">
